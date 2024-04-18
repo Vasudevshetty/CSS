@@ -1,0 +1,22 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Landing page for natours",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vasudevshety/CSS.git#main"
+  },
+  "author": "Vasu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vasudevshety/CSS/issues"
+  },
+  "homepage": "https://github.com/Vasudevshety/CSS/tree/main#readme",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
