@@ -55,23 +55,147 @@ body {
   /* how this works is coz, the obj's center has to be placed at exact parent centers, we place its refernce at 
   parent's center first, and we make reverse positioning and sending it back.*/
   transform: translate(-50%, -50%);
+  /* for the button to be shifted to center */
+  text-align: center;
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+
+  /* we get some sort of shaking at the end of the animation at corners so to fix it */
+  backface-visibility: hidden;
+
+  margin-bottom: 60px;
 }
+
 /* making it block from inline, makes it take entire 100% width and gives itself a line break. */
 .heading-primary-main {
   font-size: 60px;
   letter-spacing: 35px;
   display: block;
   font-weight: 400;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+
+  /* animation-iteration-count: 3; 
+  animation-delay: 3s; */
 }
+
 .heading-primary-sub {
   display: block;
   font-weight: 700;
   letter-spacing: 17.4px;
   font-size: 20px;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
+/* Animations */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* using transform propertiy */
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* using transform propertiy */
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    /* using transform propertiy */
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/* button */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 100px;
+  transition: all 0.2s;
+
+  /* to make it refernce for after pesudo class  */
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  /* x y blurr color */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  color: #777;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+}
+
+/* lets put in that after effet */
+.btn::after {
+  /* this is treated as a child of the parent, like gets realtive to it */
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  /* now to make it to be in behind teh button */
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  /* make it stay behind */
+  z-index: -1;
+
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  /* we get our button there by the page reolads, and gets its animation later, so to apply 0% animtion styles use */
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+}
