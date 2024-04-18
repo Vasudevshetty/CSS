@@ -30,4 +30,48 @@ body {
 
   /*to give that clipping effect to the header part, adding up clipping coordiantes  */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  position: relative;
 }
+
+.logo-box {
+  /* to get a refernce we always set the parent element's position as realtive */
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+  /* the width will be auto scaled by the browesrer, and vice-versa, follow any one of the convetion always. */
+}
+
+.text-box {
+  position: absolute;
+  /* This is will go to the exact 50% of the parent elemeent, and our box element gets start referncing from there. */
+  top: 40%;
+  left: 50%;
+  /* so to make it proper lets make it tranform it a little. */
+  /* how this works is coz, the obj's center has to be placed at exact parent centers, we place its refernce at 
+  parent's center first, and we make reverse positioning and sending it back.*/
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+/* making it block from inline, makes it take entire 100% width and gives itself a line break. */
+.heading-primary-main {
+  font-size: 60px;
+  letter-spacing: 35px;
+  display: block;
+  font-weight: 400;
+}
+.heading-primary-sub {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+  font-size: 20px;
+}
+
