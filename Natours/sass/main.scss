@@ -1,15 +1,24 @@
 /* to make it look same, and style the way we want, we make it normalised. */
+
+$color-primary: #7ed567;
+$color-primary-light: #55c571;
+$color-primary-dark: #28b485;
+$color-grey-dark: #777;
+$color-white: #fff;
+
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /* font-size: 10px; easier to manipulte using rem.*/
   /* font-size: 10px; */
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 /* lets put up font realted stuff here in body, coz it inhierts */
 body {
@@ -17,30 +26,41 @@ body {
   font-weight: 400;
   /* font-size: 62.5%; */
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 113, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
   /* Nicely adjust to the viewport. */
   background-size: cover;
   /*make it stick the top whenever we change the dimension of the window.  */
   background-position: top;
+
   /*to give that clipping effect to the header part, adding up clipping coordiantes  */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative; }
+
+  position: relative;
+}
 
 .header__logo-box {
   /* to get a refernce we always set the parent element's position as realtive */
   position: absolute;
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
   height: 3.5rem;
-  /* the width will be auto scaled by the browesrer, and vice-versa, follow any one of the convetion always. */ }
+  /* the width will be auto scaled by the browesrer, and vice-versa, follow any one of the convetion always. */
+}
 
 .header__text-box {
   position: absolute;
@@ -52,14 +72,18 @@ body {
   parent's center first, and we make reverse positioning and sending it back.*/
   transform: translate(-50%, -50%);
   /* for the button to be shifted to center */
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
+
   /* we get some sort of shaking at the end of the animation at corners so to fix it */
   backface-visibility: hidden;
-  margin-bottom: 6rem; }
+
+  margin-bottom: 6rem;
+}
 
 /* making it block from inline, makes it take entire 100% width and gives itself a line break. */
 .heading-primary--main {
@@ -70,8 +94,10 @@ body {
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+
   /* animation-iteration-count: 3; 
-  animation-delay: 3s; */ }
+  animation-delay: 3s; */
+}
 
 .heading-primary--sub {
   display: block;
@@ -80,39 +106,51 @@ body {
   letter-spacing: 1.75rem;
   animation-name: moveInRight;
   animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  animation-timing-function: ease-out;
+}
 
 /* Animations */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
     /* using transform propertiy */
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
     /* using transform propertiy */
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
     /* using transform propertiy */
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /* button */
 .btn:link,
@@ -123,22 +161,27 @@ body {
   padding: 1.5rem 4rem;
   border-radius: 10rem;
   transition: all 0.2s;
+
   font-size: 1.6rem;
   /* to make it refernce for after pesudo class  */
-  position: relative; }
+  position: relative;
+}
 
 .btn:hover {
   transform: translateY(-0.3rem);
   /* x y blurr color */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
 
 .btn:active {
   transform: translateY(-0.1rem);
-  color: #777;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  color: $color-grey-dark;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
 
 .btn--white {
-  background-color: #fff; }
+  background-color: $color-white;
+}
 
 /* lets put in that after effet */
 .btn::after {
@@ -152,18 +195,25 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+
   /* make it stay behind */
   z-index: -1;
-  transition: all 0.4s; }
+
+  transition: all 0.4s;
+}
 
 .btn--white::after {
-  background-color: #fff; }
+  background-color: $color-white;
+}
 
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   /* we get our button there by the page reolads, and gets its animation later, so to apply 0% animtion styles use */
   animation: moveInBottom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
+
