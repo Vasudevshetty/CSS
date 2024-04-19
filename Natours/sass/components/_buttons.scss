@@ -1,0 +1,62 @@
+/* button */
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    transition: all 0.2s;
+
+    font-size: 1.6rem;
+    /* to make it refernce for after pesudo class  */
+    position: relative;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /* x y blurr color */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    color: $color-grey-dark;
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &::after {
+    /* this is treated as a child of the parent, like gets realtive to it */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* now to make it to be in behind teh button */
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    /* make it stay behind */
+    z-index: -1;
+
+    transition: all 0.4s;
+  }
+  &--white {
+    background-color: $color-white;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  &--animated {
+    /* we get our button there by the page reolads, and gets its animation later, so to apply 0% animtion styles use */
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}

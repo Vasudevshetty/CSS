@@ -1,0 +1,44 @@
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  /* Nicely adjust to the viewport. */
+  background-size: cover;
+  /*make it stick the top whenever we change the dimension of the window.  */
+  background-position: top;
+
+  /*to give that clipping effect to the header part, adding up clipping coordiantes  */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  position: relative;
+
+  &__logo-box {
+    /* to get a refernce we always set the parent element's position as realtive */
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+    /* the width will be auto scaled by the browesrer, and vice-versa, follow any one of the convetion always. */
+  }
+
+  &__text-box {
+    position: absolute;
+    /* This is will go to the exact 50% of the parent elemeent, and our box element gets start referncing from there. */
+    top: 40%;
+    left: 50%;
+    /* so to make it proper lets make it tranform it a little. */
+    /* how this works is coz, the obj's center has to be placed at exact parent centers, we place its refernce at 
+  parent's center first, and we make reverse positioning and sending it back.*/
+    transform: translate(-50%, -50%);
+    /* for the button to be shifted to center */
+    text-align: center;
+  }
+}
